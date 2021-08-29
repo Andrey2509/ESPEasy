@@ -1,17 +1,18 @@
 Инструкция по компиляции прошивки espeasy с плагином Меркурий 230.
 
-1. Ставим atom по инструкции: https://letscontrolit.com/wiki/index.ph … Platformio
+1. Ставим VScode platformio по инструкции: https://docs.platformio.org/en/latest/integration/ide/vscode.html#ide-vscode
 
 2. Скачиваем последний релиз espeasy https://github.com/letscontrolit/ESPEasy/releases
 
-3. Разархивируем архив релиза, в папку src записываем файл https://github.com/Andrey2509/ESPEasy/b ... ury230.ino
+3. Разархивируем архив релиза, в папку src записываем файл _P220_Mercury230.ino
 
-4. В файле platformio.ini раскомментировать тип прошивки, например: env_default = normal_ESP8266_4096
+4. В файле platformio.ini раскомментировать тип прошивки, например: default_envs = normal_ESP8266_4M1M
 
-5. В файле define_plugin_sets.h в секции #ifdef PLUGIN_SET_STABLE (соответствует прошивке normal) добавляем строку:
+5. В файле .\src\src\CustomBuild\define_plugin_sets.h  в секции #ifdef PLUGIN_SET_STABLE (соответствует прошивке normal) добавляем строку:
 
 #define USES_P220 //Mercury 230
 
 6. Компилируем.
 
-Так как данных много, а в espeasy жёсткое ограничение по количеству значений для каждого плагина, в плагине меркурий 230 вшита отправка данных только по mqtt. При этом Надо обязательно создать подключение в настройках "Controllers" (OpenHAB MQTT).
+Так как данных много, а в espeasy жёсткое ограничение по количеству значений для каждого плагина, в плагине меркурий 230 вшита отправка данных только по mqtt.
+При этом Надо обязательно создать подключение в настройках "Controllers" (OpenHAB MQTT).
